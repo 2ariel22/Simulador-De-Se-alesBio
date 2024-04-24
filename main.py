@@ -1,21 +1,56 @@
 import flet as ft
 
 color_text = '#192833'
-sobre_simulado_text = """Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et lacus neque. Fusce ultricies, lorem eget elementum cursus, arcu nulla accumsan diam, et consequat lacus quam sit amet turpis. Integer efficitur porttitor massa, non hendrerit enim pellentesque a. Morbi rutrum lobortis accumsan. Curabitur odio dolor, suscipit nec sapien interdum, varius pretium mauris. Nulla fringilla ornare vulputate. Phasellus dapibus eros quam, eu bibendum est iaculis nec. Nam porta, mi a scelerisque fermentum, elit sem elementum velit, in sagittis ante velit quis turpis. Cras lobortis augue molestie, viverra libero sit amet, scelerisque dui. Nam venenatis cursus risus sit amet consectetur. Ut sagittis facilisis diam, ut fermentum dui dignissim sed. Donec feugiat nisl non eros porta condimentum. Quisque tellus metus, maximus nec nisi at, dapibus gravida purus. Aliquam erat volutpat. Maecenas feugiat ut orci sit amet hendrerit."""
+foto = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwjZ4t-ih4nbCkWprmRCNDb9I3t5bzNEcEeXDtZ9zFoXuf_O0M"
+sobre_simulado_text = """¡Bienvenido a la plataforma del simulador de auscultación cardio-pulmonar SymulAus desarrollado por estudiantes de Ingeniería Biomédica de la Universidad Simón Bolívar! Nos complace presentarte una herramienta educativa diseñada para estudiantes , profesionales y entusiastas del área de la salud que desean practicar y mejor sus habilidades en auscultación cardíaca y pulmonar de manera interactiva y efectiva."""
 
 def main(page: ft.Page):
     page.title = "Biopagina"
     page.window_resizable = True
     page.scroll = ft.ScrollMode.AUTO
     page.padding = 0
-    page.bgcolor = '#90bfd0'
+    page.bgcolor = '#a5d1c7'
     page.fonts = {
         "zpix": "https://github.com/SolidZORO/zpix-pixel-font/releases/download/v3.1.8/zpix.ttf",
         "stocky": "font/stocky.ttf",
         "Roboto": "font/Roboto-BlackItalic.ttf"
     }
     page.theme = ft.Theme(font_family="Roboto")
+    page.navigation_bar = ft.NavigationBar(
+        destinations=[
+            ft.NavigationDestination(icon=ft.icons.EXPLORE, label="Explore",),
+            ft.NavigationDestination(icon=ft.icons.COMMUTE, label="Commute"),
+            ft.NavigationDestination(
+                icon=ft.icons.BOOKMARK_BORDER,
+                selected_icon=ft.icons.BOOKMARK,
+                label="Explore",
+            ),
+        ])
+    def olaMundo1():
+        print("ola mundo1")
+    def olaMundo2():
+        print("ola mundo2")
+    def olaMundo3():
+        print("ola mundo3")
 
+    # Crear la barra de navegación
+    appbar = ft.AppBar(
+        leading=ft.Icon(ft.icons.MENU),
+        title=ft.Text("Simulador de señalesBio"),
+        center_title=True,
+        bgcolor='#a5d1c7',
+        actions=[
+            ft.PopupMenuButton(
+                items=[
+                    ft.PopupMenuItem(text="Instagram",on_click=lambda:olaMundo1()),
+                    ft.PopupMenuItem(text="Whasap",on_click=lambda:olaMundo2()),
+                    ft.PopupMenuItem(text="tiktok",on_click=lambda:olaMundo3()),
+                ]
+            ,bgcolor='#a5d1c7')
+        ]
+    )
+
+    # Crear el contenido de la página
     titulo = ft.Row(
         [
             ft.Container(width=0, expand=True),
@@ -28,15 +63,15 @@ def main(page: ft.Page):
 
     items_sobre_programa = ft.Row(
         [
-            ft.Container(width=100, height=100, content=ft.Image(src=f"https://w7.pngwing.com/pngs/732/154/png-transparent-pokemon-meowth-whiskers-meowth-pokemon-go-ash-ketchum-pokemon-go-mammal-cat-like-mammal-carnivoran-thumbnail.png", fit=ft.ImageFit.CONTAIN)),
+            ft.Container(width=100, height=100, content=ft.Image(src=foto, fit=ft.ImageFit.CONTAIN)),
             ft.Column(
                 [
                     ft.Text("Sobre el Simulador", color=color_text, size=20, weight=ft.FontWeight.BOLD),
-                    ft.Text(value=sobre_simulado_text, color=color_text, size=15, text_align=ft.TextAlign.JUSTIFY),
+                    ft.Container(ft.Text(value=sobre_simulado_text, color=color_text, size=15, text_align=ft.TextAlign.JUSTIFY),border=ft.border.all(color='white',width=4),margin=2),
                 ],
                 expand=True,  # Permite que el texto se expanda horizontalmente
             ),
-            ft.Container(width=100, height=100, content=ft.Image(src=f"https://github.com/2ariel22/Simulador-De-Se-alesBio/blob/master/img/pokemon.png?raw=true", fit=ft.ImageFit.CONTAIN)),
+            ft.Container(width=100, height=100, content=ft.Image(src=foto, fit=ft.ImageFit.CONTAIN)),
         ],
         alignment=ft.MainAxisAlignment.SPACE_EVENLY,
     )
@@ -45,7 +80,7 @@ def main(page: ft.Page):
 
     imagen_representativa = ft.Container(
         content=ft.Image(
-            src=f"https://st2.depositphotos.com/1055484/10070/i/450/depositphotos_100704556-stock-photo-fresh-guava-fruits-on-a.jpg",
+            src="https://st2.depositphotos.com/1055484/10070/i/450/depositphotos_100704556-stock-photo-fresh-guava-fruits-on-a.jpg",
             fit=ft.ImageFit.CONTAIN,
             border_radius=8,
         ),
@@ -54,13 +89,14 @@ def main(page: ft.Page):
 
     content = ft.Column(
         [
-            titulo,
+            
             sobre_programa,
             imagen_representativa,
         ],
         horizontal_alignment=ft.CrossAxisAlignment.CENTER,
     )
 
-    page.add(content)
+    # Agregar la barra de navegación y el contenido a la página
+    page.add(appbar, content)
 
 ft.app(target=main)
