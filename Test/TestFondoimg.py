@@ -1,11 +1,12 @@
 import flet as ft
 
 def main(page: ft.Page):
+    page.padding=0
     background_image = ft.Image(
-        src="img/estrella.jpg",
+        src="img/Test1.png",
         width=page.width,
         height=page.height,
-        fit=ft.ImageFit.COVER,
+        fit=ft.ImageFit.FILL,
     )
 
     background_container = ft.Container(
