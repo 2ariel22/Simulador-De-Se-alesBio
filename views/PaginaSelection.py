@@ -1,9 +1,10 @@
 import flet as ft
 class PaginaSelection():
-    def __init__(self,navigation_bar,appbar,background_container,page):
+    def __init__(self,navigation_bar,appbar,background_container,page,control):
         self.navigation_bar = navigation_bar
         self.appbar = appbar
         self.page = page
+        self.control = control
         self.background_container = background_container
         self.fotoicon ='https://i.postimg.cc/XN8N04Zr/VENTANA2-PARTE-1.png'
         #self.color_text ='#192833'
@@ -13,8 +14,10 @@ class PaginaSelection():
     
     def AuscultacionCardiaca(self,e):
             print("AuscultacionCardiaca")
+            self.control.navigate(ft.ControlEvent(data='0',control=None,name=None,page=None,target=None))
     def AuscultacionPulmunar(self,e):
             print("AuscultacionPulmunar")
+            self.control.navigate(ft.ControlEvent(data='0',control=None,name=None,page=None,target=None))
     def getPaginaSelection(self):
         textVentana2 ="¿Qué auscultación desea realizar?"
     

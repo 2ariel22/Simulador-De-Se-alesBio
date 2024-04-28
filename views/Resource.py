@@ -3,6 +3,7 @@ import webbrowser
 from views.PrincipalView import PrincipalView
 from views.PaginaSelection import PaginaSelection
 from views.PaginaSelectionTipo import PaginaSelectionTipo
+from views.PulmonarNormal import PulmonarNormal
 
 
 class Resource():
@@ -18,11 +19,18 @@ class Resource():
         self.paginaSelection = PaginaSelection(navigation_bar=self.getNavigation_bar(),
                                       appbar=self.getAppBar(),
                                       background_container=self.getBackground(),
-                                      page=self.page)
+                                      page=page,
+                                      control=self)
 
-        self.paginaSelectionTipo = PaginaSelectionTipo(page=self.page,appbar=self.getAppBar(),
+        self.paginaSelectionTipo = PaginaSelectionTipo(page=page,appbar=self.getAppBar(),
                                                  background_container=self.getBackground(),
-                                                 navigation_bar=self.getNavigation_bar())
+                                                 navigation_bar=self.getNavigation_bar(),
+                                                 control=self)
+        
+        self.pulmonarNormal = PulmonarNormal(page=page,
+                                            appbar=self.getAppBar(),
+                                            background_container=self.getBackground(),
+                                            navigation_bar=self.getNavigation_bar())
         
     
     def goInstagram(self,e):
@@ -53,8 +61,7 @@ class Resource():
     )
     
     def navigate(self,destination: ft.ControlEvent):
-        
-        
+
         if destination.data == "0":
             self.page.views.clear()
             
@@ -64,9 +71,14 @@ class Resource():
             self.page.views.clear()
             self.page.views.append(self.paginaSelection.getPaginaSelection()
             )
-        else:
+        elif destination.data == "2":
             self.page.views.clear()
             self.page.views.append(self.principalView.getPrincipalView())
+
+        elif destination.data == "3":
+            self.page.views.clear()
+            self.page.views.append(self.pulmonarNormal.getPulmonarNormal())
+        
         self.page.update()
 
     
@@ -105,6 +117,4 @@ class Resource():
         )
         
     def iniciar(self):
-        self.page.views.append(self.principalView.getPrincipalView())
-    
-        self.page.update()
+        self.navigate(ft.ControlEvent(data='2',control=None,name=None,page=None,target=None))
