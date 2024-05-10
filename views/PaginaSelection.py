@@ -1,4 +1,5 @@
 import flet as ft
+
 class PaginaSelection():
     def __init__(self,navigation_bar,appbar,background_container,page,control):
         self.navigation_bar = navigation_bar
@@ -11,10 +12,13 @@ class PaginaSelection():
         self.fotopulmon ="https://i.postimg.cc/rsQqGN61/VENTANA2-PULMON-PARA-OPCI-N-DE-MEN.png"
         self.fotoCorazon = "https://i.postimg.cc/kGnnthHM/VENTANA2-CORAZ-N-PARA-OPCI-N-DE-MEN.png"
         
+        
     
     def AuscultacionCardiaca(self,e):
+            
             print("AuscultacionCardiaca")
-            self.control.navigate(ft.ControlEvent(data='0',control=None,name=None,page=None,target=None))
+
+            self.control.navigate(ft.ControlEvent(data='4',control=None,name=None,page=None,target=None))
     def AuscultacionPulmunar(self,e):
             print("AuscultacionPulmunar")
             self.control.navigate(ft.ControlEvent(data='0',control=None,name=None,page=None,target=None))
@@ -86,3 +90,4 @@ class PaginaSelection():
                         scroll=ft.ScrollMode.AUTO,padding=0,
             
         )
+    

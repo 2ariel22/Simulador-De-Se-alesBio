@@ -13,14 +13,17 @@ class PaginaSelectionTipo():
         self.fotoicon ='https://i.postimg.cc/XN8N04Zr/VENTANA2-PARTE-1.png'
         self.ondaSon = 'img/onda.png'
         self.colorText = '#DAEDE8'
+        self.tipo = None
+        
     
     def soundNormal(self,e):
             print("Sonido Normal")
-            self.control.navigate(ft.ControlEvent(data='3',control=None,name=None,page=None,target=None))
+            self.control.navigate(ft.ControlEvent(data=self.tipo,control=None,name=None,page=None,target=None))
     def soundAnormal(self,e):
             print("Sonido Anormal")
     
-    def getPaginaSelectionTipo(self):
+    def getPaginaSelectionTipo(self,tipo):
+        self.tipo = tipo
         iconImagenTipo = ft.Container(
             ft.Column(controls=[
                 ft.Row(controls=[

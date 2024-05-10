@@ -1,32 +1,32 @@
 import flet as ft
 import pygame
-class PulmonarNormal():
+class CardiacoNormal():
     def __init__(self,page,navigation_bar,appbar,background_container):
         self.page = page
         self.navigation_bar = navigation_bar
         self.background_container =background_container
         self.appbar = appbar
-        self.fotoFondo ='img/PULMONAR.png'
+        self.fotoFondo ='img/CARDIACO.png'
         self.listAudios = self.InicializarAudios()
 
 
-    def Segmento_apical_posterior(self,e):
-        print("Segmento_apical_posterior")
+    def aortico(self,e):
+        print("aortico")
         self.ReproducirAud(self.listAudios[0])
-    def Segmento_apical(self,e):
-        print("Segmento_apical")
+    def Triscupideo(self,e):
+        print("Triscupideo")
         self.ReproducirAud(self.listAudios[1])
-    def SegmentoInferior(self,e):
-        print("Segmento inferior")
+    def Todos(self,e):
+        print("Todos")
         self.ReproducirAud(self.listAudios[2])
-    def Segmento_apical_lobulo_superior(self,e):
-        print("Segmento_apical_lobulo_superior")
+    def Pulmonar(self,e):
+        print("Pulmonar")
         self.ReproducirAud(self.listAudios[3])
-    def Segmento_apicalDerecho(self,e):
-        print("Segmento_apicalDerecho")
+    def Espacio_de_Erb(self,e):
+        print("Espacio_de_Erb")
         self.ReproducirAud(self.listAudios[4])
-    def SegmentoInferiorderecho(self,e):
-        print("SegmentoInferiorderecho")
+    def SegmentoInferior(self,e):
+        print("SegmentoInferior")
         self.ReproducirAud(self.listAudios[5])
 
     def getBackground(self):
@@ -53,33 +53,33 @@ class PulmonarNormal():
                         ft.Column(
                             controls=[
                                  ft.CupertinoButton(
-                            content=ft.Text("Segmento apical/posterior - 1", color='#DAEDE8',
+                            content=ft.Text("aortico - 1", color='#DAEDE8',
                                             text_align=ft.TextAlign.CENTER),
                             bgcolor='#709895',
                             alignment=ft.alignment.center,
                             border_radius=ft.border_radius.all(15),
                             opacity_on_click=0.5,
-                            on_click=self.Segmento_apical_posterior,
+                            on_click=self.aortico,
                             padding=3,
                             width=self.page.width/4),
 
                              ft.CupertinoButton(
-                            content=ft.Text("Segmento apical - 3", color='#DAEDE8',text_align=ft.TextAlign.CENTER),
+                            content=ft.Text("Triscupideo - 3", color='#DAEDE8',text_align=ft.TextAlign.CENTER),
                             bgcolor='#709895',
                             alignment=ft.alignment.center,
                             border_radius=ft.border_radius.all(15),
                             opacity_on_click=0.5,
-                            on_click=self.Segmento_apical,
+                            on_click=self.Triscupideo,
                             padding=3,
                             width=self.page.width/4),
 
                              ft.CupertinoButton(
-                            content=ft.Text("Segmento inferior - 5", color='#DAEDE8',text_align=ft.TextAlign.CENTER),
+                            content=ft.Text("Todos", color='#DAEDE8',text_align=ft.TextAlign.CENTER),
                             bgcolor='#709895',
                             alignment=ft.alignment.center,
                             border_radius=ft.border_radius.all(15),
                             opacity_on_click=0.5,
-                            on_click=self.SegmentoInferior,
+                            on_click=self.Todos,
                             padding=3,
                             width=self.page.width/4),
                             
@@ -99,32 +99,32 @@ class PulmonarNormal():
                             ft.Column(
                             controls=[
                                 ft.CupertinoButton(
-                            content=ft.Text("Segmento apical / lobulo superior - 2", color='#DAEDE8',text_align=ft.TextAlign.CENTER),
+                            content=ft.Text("Pulmonar- 2", color='#DAEDE8',text_align=ft.TextAlign.CENTER),
                             bgcolor='#709895',
                             alignment=ft.alignment.center,
                             border_radius=ft.border_radius.all(15),
                             opacity_on_click=0.5,
-                            on_click=self.Segmento_apical_lobulo_superior,
+                            on_click=self.Pulmonar,
                             padding=3,
                             width=self.page.width/4),
 
                              ft.CupertinoButton(
-                            content=ft.Text("Segmento apical - 4", color='#DAEDE8',text_align=ft.TextAlign.CENTER),
+                            content=ft.Text("Espacio_de_Erb - 4", color='#DAEDE8',text_align=ft.TextAlign.CENTER),
                             bgcolor='#709895',
                             alignment=ft.alignment.center,
                             border_radius=ft.border_radius.all(15),
                             opacity_on_click=0.5,
-                            on_click=self.Segmento_apicalDerecho,
+                            on_click=self.Espacio_de_Erb,
                             padding=3,
                             width=self.page.width/4),
 
                              ft.CupertinoButton(
-                            content=ft.Text("Segmento inferior - 6", color='#DAEDE8',text_align=ft.TextAlign.CENTER),
+                            content=ft.Text("Segmento inferior - 5", color='#DAEDE8',text_align=ft.TextAlign.CENTER),
                             bgcolor='#709895',
                             alignment=ft.alignment.center,
                             border_radius=ft.border_radius.all(15),
                             opacity_on_click=0.5,
-                            on_click=self.SegmentoInferiorderecho,
+                            on_click=self.SegmentoInferior,
                             padding=3,
                             width=self.page.width/4,),
 
@@ -169,7 +169,7 @@ class PulmonarNormal():
             continue
         print("sonido reproducido")     
 
-    def getPulmonarNormal(self):
+    def getCardiacoNormal(self):
         medioSelectionTipo = ft.Stack([
             self.background_container,
             self.getBackground(),

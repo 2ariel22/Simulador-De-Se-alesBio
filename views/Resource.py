@@ -4,6 +4,7 @@ from views.PrincipalView import PrincipalView
 from views.PaginaSelection import PaginaSelection
 from views.PaginaSelectionTipo import PaginaSelectionTipo
 from views.PulmonarNormal import PulmonarNormal
+from views.CardiacoNormal import CardiacoNormal
 
 
 class Resource():
@@ -28,6 +29,10 @@ class Resource():
                                                  control=self)
         
         self.pulmonarNormal = PulmonarNormal(page=page,
+                                            appbar=self.getAppBar(),
+                                            background_container=self.getBackground(),
+                                            navigation_bar=self.getNavigation_bar())
+        self.cardiacoNormal = CardiacoNormal(page=page,
                                             appbar=self.getAppBar(),
                                             background_container=self.getBackground(),
                                             navigation_bar=self.getNavigation_bar())
@@ -61,11 +66,11 @@ class Resource():
     )
     
     def navigate(self,destination: ft.ControlEvent):
-
+  
         if destination.data == "0":
             self.page.views.clear()
             
-            self.page.views.append(self.paginaSelectionTipo.getPaginaSelectionTipo())
+            self.page.views.append(self.paginaSelectionTipo.getPaginaSelectionTipo(tipo='3'))
         
         elif destination.data == "1":
             self.page.views.clear()
@@ -78,6 +83,18 @@ class Resource():
         elif destination.data == "3":
             self.page.views.clear()
             self.page.views.append(self.pulmonarNormal.getPulmonarNormal())
+            print("pulmonar")
+        
+        if destination.data == "4":
+            self.page.views.clear()
+            
+            self.page.views.append(self.paginaSelectionTipo.getPaginaSelectionTipo(tipo='5'))
+
+        elif destination.data == "5":
+            self.page.views.clear()
+            self.page.views.append(self.cardiacoNormal.getCardiacoNormal())
+            print("corazon")
+        
         
         self.page.update()
 
